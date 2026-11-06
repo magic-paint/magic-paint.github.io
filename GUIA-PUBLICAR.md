@@ -9,7 +9,7 @@
 | Instaladores de Mac, Windows y Linux | GitHub Releases | Gratis, sin límite de descargas |
 | Construir los instaladores | GitHub Actions (runners de Mac y Windows) | Gratis en repos públicos |
 
-Tu URL va a ser `https://TU-USUARIO.github.io/magic-paint/`.
+Tu URL va a ser `https://magic-paint.github.io/`.
 
 ---
 
@@ -31,7 +31,7 @@ git push -u origin main
 
 Repo → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
-El workflow **Deploy website** se ejecuta solo con cada push a `main`. Cuando termine (unos 2 minutos), la página estará en `https://TU-USUARIO.github.io/magic-paint/`.
+El workflow **Deploy website** se ejecuta solo con cada push a `main`. Cuando termine (unos 2 minutos), la página estará en `https://magic-paint.github.io/`.
 
 El workflow pone tu `usuario/repo` en los botones de descarga, así que no tienes que editar nada.
 

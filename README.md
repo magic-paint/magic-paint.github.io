@@ -38,7 +38,7 @@ Everything runs on GitHub's free tier: Actions builds the installers, Releases h
    About 10 minutes later the release contains `MagicPaint-Mac.dmg` (universal), `MagicPaint-Windows-Setup.exe` and `MagicPaint-Linux.AppImage`.
 4. The website's download buttons always point at `releases/latest`, so new versions appear on the site automatically.
 
-The site lives at `https://<your-user>.github.io/<repo>/` and the browser version at `.../play/`.
+The site lives at `https://magic-paint.github.io/` (repo `magic-paint/magic-paint.github.io`) and the browser version at `.../play/`.
 
 ## Code signing (optional, later)
 

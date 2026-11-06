@@ -1,6 +1,6 @@
 {
   "name": "magic-paint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A joyful paint studio for little artists.",
   "main": "electron/main.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "electron-builder": "^26.18.0"
   },
   "productName": "Magic Paint",
-  "homepage": "https://github.com",
+  "homepage": "https://magic-paint.github.io/",
   "private": true,
   "build": {
     "appId": "com.magicpaint.app",
