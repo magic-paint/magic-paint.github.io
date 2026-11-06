@@ -39,9 +39,9 @@ jobs:
       - name: Point the app's Help menu at the website
         shell: bash
         run: |
-          OWNER="${GITHUB_REPOSITORY%%/*}"
+          OWNER="$(echo "${GITHUB_REPOSITORY%%/*}" | tr "[:upper:]" "[:lower:]")"
           REPO="${GITHUB_REPOSITORY##*/}"
-          npm pkg set homepage="https://${OWNER,,}.github.io/${REPO}/"
+          npm pkg set homepage="https://${OWNER}.github.io/${REPO}/"
           if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then npm pkg set version="${GITHUB_REF_NAME#v}"; fi
 
       - name: Build installer
