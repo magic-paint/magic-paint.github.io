@@ -1,0 +1,48 @@
+# Publishes the website (and the play-in-browser version of the app at /play/) to GitHub Pages.
+# One-time setup: repo Settings → Pages → Source: "GitHub Actions".
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+    paths: ['website/**', 'app/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Assemble site
+        shell: bash
+        env:
+          SITE: ${{ steps.pages.outputs.base_url }}
+        run: |
+          mkdir -p _site
+          cp -R website/. _site/
+          cp -R app _site/play
+          # Fill in this repo's name so the download buttons point at its Releases.
+          grep -rlE '__REPO__|__SITE__' _site --include='*.html' --include='*.js' | xargs -r sed -i -e "s#__REPO__#${GITHUB_REPOSITORY}#g" -e "s#__SITE__#${SITE%/}/#g"
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

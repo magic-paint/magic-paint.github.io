@@ -1,0 +1,114 @@
+{
+  "name": "magic-paint",
+  "version": "1.0.0",
+  "description": "A joyful paint studio for little artists.",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist:mac": "electron-builder --mac --publish never",
+    "dist:win": "electron-builder --win --publish never",
+    "dist:linux": "electron-builder --linux --publish never"
+  },
+  "author": {
+    "name": "Magic Paint"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0"
+  },
+  "productName": "Magic Paint",
+  "homepage": "https://github.com",
+  "private": true,
+  "build": {
+    "appId": "com.magicpaint.app",
+    "productName": "Magic Paint",
+    "copyright": "© 2026 Magic Paint",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**",
+      "app/**",
+      "package.json"
+    ],
+    "asar": true,
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
+      "category": "public.app-category.kids-games",
+      "icon": "build/icon.icns",
+      "identity": "-",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "artifactName": "MagicPaint-Mac.${ext}",
+      "darkModeSupport": false
+    },
+    "dmg": {
+      "title": "Magic Paint",
+      "background": "build/dmg-background.png",
+      "iconSize": 120,
+      "window": {
+        "width": 660,
+        "height": 420
+      },
+      "contents": [
+        {
+          "x": 180,
+          "y": 215,
+          "type": "file"
+        },
+        {
+          "x": 480,
+          "y": 215,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "MagicPaint-Windows-Setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "Magic Paint",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "Education",
+      "artifactName": "MagicPaint-Linux.${ext}",
+      "syncDesktopName": true
+    },
+    "publish": null
+  },
+  "desktopName": "magic-paint.desktop"
+}

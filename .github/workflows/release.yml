@@ -1,0 +1,78 @@
+# Builds the Windows and Mac installers on GitHub's free runners and publishes them
+# as a GitHub Release. Trigger: push a tag like v1.0.0  (git tag v1.0.0 && git push --tags)
+name: Release desktop apps
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            cmd: dist:mac
+            files: dist/MagicPaint-Mac.dmg
+          - os: windows-latest
+            cmd: dist:win
+            files: dist/MagicPaint-Windows-Setup.exe
+          - os: ubuntu-latest
+            cmd: dist:linux
+            files: dist/MagicPaint-Linux.AppImage
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Point the app's Help menu at the website
+        shell: bash
+        run: |
+          OWNER="${GITHUB_REPOSITORY%%/*}"
+          REPO="${GITHUB_REPOSITORY##*/}"
+          npm pkg set homepage="https://${OWNER,,}.github.io/${REPO}/"
+          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then npm pkg set version="${GITHUB_REF_NAME#v}"; fi
+
+      - name: Build installer
+        run: npm run ${{ matrix.cmd }}
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}
+          path: ${{ matrix.files }}
+          if-no-files-found: error
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: out
+          merge-multiple: true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || format('build-{0}', github.run_number) }}
+          name: Magic Paint ${{ github.ref_type == 'tag' && github.ref_name || format('build {0}', github.run_number) }}
+          make_latest: true
+          generate_release_notes: true
+          files: |
+            out/MagicPaint-Mac.dmg
+            out/MagicPaint-Windows-Setup.exe
+            out/MagicPaint-Linux.AppImage

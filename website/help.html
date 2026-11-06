@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Help &amp; install guide — Magic Paint</title>
+<meta name="description" content="How to install, open, update and uninstall Magic Paint on Mac, Windows and Linux.">
+<meta name="theme-color" content="#2A2358">
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="./" aria-label="Magic Paint home"><img src="assets/logo.svg" alt="Magic Paint" width="236" height="48"></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="./#features">Features</a>
+      <a href="help.html">Help</a>
+      <a class="btn sm" href="play/">Play online</a>
+      <a class="btn sm primary" href="./#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+    <p class="kicker">Help</p>
+    <h1>Install guide</h1>
+    <p>Magic Paint installs in about a minute and then works without the internet. Pick your computer:</p>
+    <div class="pill-nav">
+      <a class="btn sm" href="#mac">Mac</a>
+      <a class="btn sm" href="#windows">Windows</a>
+      <a class="btn sm" href="#linux">Linux</a>
+      <a class="btn sm" href="#browser">iPad &amp; Chromebook</a>
+      <a class="btn sm" href="#troubleshooting">Troubleshooting</a>
+    </div>
+
+    <h2 id="mac">Mac</h2>
+    <div class="card">
+      <ol class="steps">
+        <li><span>Download <b>MagicPaint-Mac.dmg</b> from the <a href="./#download">download section</a>. One file works on both Apple silicon and Intel Macs.</span></li>
+        <li><span>Open the file and drag the <b>Magic Paint</b> icon onto the <b>Applications</b> folder.</span></li>
+        <li><span>Open Magic Paint from Applications or Launchpad.</span></li>
+        <li><span>The first time, macOS may say <b>"Apple could not verify 'Magic Paint' is free of malware."</b> Click <b>Done</b>, not Move to Trash.</span></li>
+        <li><span>Open <b>System Settings → Privacy &amp; Security</b>, scroll to the bottom and click <b>Open Anyway</b> next to Magic Paint. Enter your password if asked.</span></li>
+        <li><span>That's it. From now on it opens normally. Tip: right-click it in the Dock → Options → <b>Keep in Dock</b>.</span></li>
+      </ol>
+    </div>
+    <p>Why the message? Apple asks independent apps to be registered through a paid developer program. Magic Paint isn't registered yet, so macOS asks you to confirm once.</p>
+
+    <h2 id="windows">Windows</h2>
+    <div class="card">
+      <ol class="steps">
+        <li><span>Download <b>MagicPaint-Windows-Setup.exe</b> from the <a href="./#download">download section</a>.</span></li>
+        <li><span>Open it from your Downloads folder.</span></li>
+        <li><span>If a blue <b>"Windows protected your PC"</b> box appears, click <b>More info</b>, then <b>Run anyway</b>.</span></li>
+        <li><span>Magic Paint installs just for your user account (no admin password), opens by itself and adds a desktop shortcut.</span></li>
+      </ol>
+    </div>
+    <p>Press <code>F11</code> to switch full screen on or off, which is great for little ones.</p>
+
+    <h2 id="linux">Linux</h2>
+    <div class="card">
+      <ol class="steps">
+        <li><span>Download <b>MagicPaint-Linux.AppImage</b>.</span></li>
+        <li><span>Make it runnable: right-click → Properties → Permissions → <b>Allow executing as program</b>, or run <code>chmod +x MagicPaint-Linux.AppImage</code>.</span></li>
+        <li><span>Double-click to start. Some distributions need the <code>libfuse2</code> package for AppImages.</span></li>
+      </ol>
+    </div>
+
+    <h2 id="browser">iPad, Chromebook &amp; phones</h2>
+    <div class="card">
+      <ol class="steps">
+        <li><span>Open <a href="play/"><b>Play online</b></a> in Safari or Chrome.</span></li>
+        <li><span>iPad: tap <b>Share → Add to Home Screen</b>. Chromebook: in Chrome, open the menu and choose <b>Install Magic Paint</b> (or <b>Cast, save and share → Create shortcut</b>).</span></li>
+        <li><span>Paintings are kept in that browser between visits. Use <b>Save</b> to download a picture.</span></li>
+      </ol>
+    </div>
+
+    <h2 id="update">Updating</h2>
+    <p>Download the newest version from this site and install it over the old one. Nothing gets lost, and the current painting stays where it was.</p>
+
+    <h2 id="uninstall">Uninstalling</h2>
+    <p><b>Mac:</b> drag Magic Paint from Applications to the Trash. <b>Windows:</b> Settings → Apps → Installed apps → Magic Paint → Uninstall. <b>Linux:</b> delete the AppImage file.</p>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <h3>There's no sound or voice</h3>
+    <p>Check that the speaker button in the top-right corner is on, and that your computer's volume isn't muted. Drip speaks after the first tap on <b>Let's paint!</b>.</p>
+    <h3>Mac says the app "is damaged and can't be opened"</h3>
+    <p>This can happen when a download is interrupted or a browser flags the file. Delete it, download the .dmg again and follow the Mac steps above. If it still happens, open Terminal and run <code>xattr -cr "/Applications/Magic Paint.app"</code>, then open the app again.</p>
+    <h3>Where did my painting go?</h3>
+    <p>Magic Paint remembers the current painting automatically. Saved pictures go where you chose in the Save window, and it suggests your <b>Pictures</b> folder.</p>
+    <h3>Something else?</h3>
+    <p>Open an issue on our <a data-releases href="./#download"><b>project page</b></a> and we'll help.</p>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a href="./"><img src="assets/logo.svg" alt="Magic Paint" width="186" height="38"></a>
+    <nav aria-label="Footer"><a href="./#download">Download</a><a href="play/">Play online</a><a href="help.html">Help</a><a href="privacy.html">Privacy</a><a href="brand.html">Brand</a></nav>
+    <small>© <span data-year>2026</span> Magic Paint.</small>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
