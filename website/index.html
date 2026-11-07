@@ -16,6 +16,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/fredoka-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
+<style>
+.os-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.os-ic{width:54px;height:54px;flex:none}
+.os-tag{display:inline-block;font:700 13px/1 var(--display);letter-spacing:.02em;color:#fff;border:2.5px solid var(--ink);border-radius:999px;padding:5px 10px 6px;margin-bottom:6px}
+.os-tag.mac{background:var(--coral)}.os-tag.win{background:var(--sky)}.os-tag.lin{background:var(--grape)}
+.howto h3{font-size:25px}
+.os-for{font:700 14px/1.35 var(--body);color:var(--ink-3);margin-top:4px}
+.modal .os-head{margin-top:18px}
+.howto:target{outline:4px solid var(--sun);outline-offset:4px}
+</style>
 </head>
 <body>
 
@@ -212,10 +222,10 @@
     <div class="wrap">
       <p class="kicker">Opening it the first time</p>
       <h2>Your computer may double-check. That's normal.</h2>
-      <p class="sub">Magic Paint is a small independent app, so Mac and Windows show a one-time safety message. Here's how to get past it.</p>
+      <p class="sub">Magic Paint is a small independent app, so Mac and Windows show a one-time safety message. Follow the steps for <b>your</b> computer: <a href="#install-mac"><b>Mac</b></a> or <a href="#install-windows"><b>Windows</b></a>. On Linux? See the <a href="help.html#linux"><b>Linux steps</b></a>.</p>
       <div class="firstrun">
-        <div class="card">
-          <h3>On a Mac</h3>
+        <div class="card howto" id="install-mac">
+          <div class="os-head"><svg class="os-ic" viewBox="0 0 48 48" fill="none" stroke="#2A2358" stroke-width="3" stroke-linejoin="round"><rect x="7" y="9" width="34" height="23" rx="4" fill="#D3EEFF"/><path d="M3 37h42l-3 4H6z" fill="#fff"/></svg><div><span class="os-tag mac">macOS</span><h3>If you have a Mac</h3><p class="os-for">MacBook, iMac, Mac mini · file: MagicPaint-Mac.dmg</p></div></div>
           <ol class="steps">
             <li><span>Open <b>MagicPaint-Mac.dmg</b> and drag Magic Paint into <b>Applications</b>.</span></li>
             <li><span>Open it. If you see <b>"Apple could not verify…"</b>, click <b>Done</b>.</span></li>
@@ -223,8 +233,8 @@
             <li><span>Confirm once. After that, it opens normally.</span></li>
           </ol>
         </div>
-        <div class="card">
-          <h3>On Windows</h3>
+        <div class="card howto" id="install-windows">
+          <div class="os-head"><svg class="os-ic" viewBox="0 0 48 48" fill="none" stroke="#2A2358" stroke-width="3" stroke-linejoin="round"><rect x="5" y="7" width="38" height="26" rx="4" fill="#E7DDFF"/><path d="M18 33v6M30 33v6M13 40h22" stroke-linecap="round"/></svg><div><span class="os-tag win">Windows</span><h3>If you have a Windows PC</h3><p class="os-for">Windows 10 or 11 desktops &amp; laptops · file: MagicPaint-Windows-Setup.exe</p></div></div>
           <ol class="steps">
             <li><span>Run <b>MagicPaint-Windows-Setup.exe</b>.</span></li>
             <li><span>If <b>"Windows protected your PC"</b> appears, click <b>More info</b>.</span></li>
@@ -273,7 +283,7 @@
       <a href="play/">Play online</a>
       <a href="help.html">Help</a>
       <a href="privacy.html">Privacy</a>
-      <a href="brand.html">Brand</a>
+      
     </nav>
     <small>© <span data-year>2026</span> Magic Paint. Made with love for little artists everywhere.</small>
   </div>
@@ -282,22 +292,31 @@
 <div class="modal" id="dl-modal" hidden role="dialog" aria-modal="true" aria-labelledby="dl-title">
   <div class="sheet">
     <button class="x" type="button" data-close aria-label="Close">×</button>
-    <h3 id="dl-title"><img src="assets/drip.svg" alt="">Your download is starting!</h3>
-    <ol class="steps" data-steps="mac">
-      <li><span>Open <b>MagicPaint-Mac.dmg</b> from Downloads and drag Magic Paint into <b>Applications</b>.</span></li>
-      <li><span>Open it. If you see <b>"Apple could not verify…"</b>, click <b>Done</b>.</span></li>
-      <li><span>Go to <b>System Settings → Privacy &amp; Security</b> and click <b>Open Anyway</b>.</span></li>
-    </ol>
-    <ol class="steps" data-steps="win" hidden>
-      <li><span>Open <b>MagicPaint-Windows-Setup.exe</b> from Downloads.</span></li>
-      <li><span>If Windows shows a blue warning, click <b>More info → Run anyway</b>.</span></li>
-      <li><span>Magic Paint opens by itself, and there's a shortcut on your desktop.</span></li>
-    </ol>
-    <ol class="steps" data-steps="linux" hidden>
-      <li><span>Right-click <b>MagicPaint-Linux.AppImage</b> → Properties → allow running as a program.</span></li>
-      <li><span>Or run <code>chmod +x MagicPaint-Linux.AppImage</code> in a terminal.</span></li>
-      <li><span>Double-click it to paint!</span></li>
-    </ol>
+    <h3 id="dl-title"><img src="assets/drip.svg" alt=""><span>Your <span data-modal-os>Mac</span> download is starting!</span></h3>
+    <div data-steps="mac">
+      <div class="os-head"><svg class="os-ic" viewBox="0 0 48 48" fill="none" stroke="#2A2358" stroke-width="3" stroke-linejoin="round"><rect x="7" y="9" width="34" height="23" rx="4" fill="#D3EEFF"/><path d="M3 37h42l-3 4H6z" fill="#fff"/></svg><div><span class="os-tag mac">macOS</span><p class="os-for">Steps for Mac</p></div></div>
+      <ol class="steps">
+        <li><span>Open <b>MagicPaint-Mac.dmg</b> from Downloads and drag Magic Paint into <b>Applications</b>.</span></li>
+        <li><span>Open it. If you see <b>"Apple could not verify…"</b>, click <b>Done</b>.</span></li>
+        <li><span>Go to <b>System Settings → Privacy &amp; Security</b> and click <b>Open Anyway</b>.</span></li>
+      </ol>
+    </div>
+    <div data-steps="win" hidden>
+      <div class="os-head"><svg class="os-ic" viewBox="0 0 48 48" fill="none" stroke="#2A2358" stroke-width="3" stroke-linejoin="round"><rect x="5" y="7" width="38" height="26" rx="4" fill="#E7DDFF"/><path d="M18 33v6M30 33v6M13 40h22" stroke-linecap="round"/></svg><div><span class="os-tag win">Windows</span><p class="os-for">Steps for Windows 10 &amp; 11</p></div></div>
+      <ol class="steps">
+        <li><span>Open <b>MagicPaint-Windows-Setup.exe</b> from Downloads.</span></li>
+        <li><span>If Windows shows a blue warning, click <b>More info → Run anyway</b>.</span></li>
+        <li><span>Magic Paint opens by itself, and there's a shortcut on your desktop.</span></li>
+      </ol>
+    </div>
+    <div data-steps="linux" hidden>
+      <div class="os-head"><svg class="os-ic" viewBox="0 0 48 48" fill="none" stroke="#2A2358" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><rect x="5" y="8" width="38" height="32" rx="5" fill="#FFF1BF"/><path d="M13 19l5 5-5 5M22 30h11"/></svg><div><span class="os-tag lin">Linux</span><p class="os-for">Steps for Linux</p></div></div>
+      <ol class="steps">
+        <li><span>Right-click <b>MagicPaint-Linux.AppImage</b> → Properties → allow running as a program.</span></li>
+        <li><span>Or run <code>chmod +x MagicPaint-Linux.AppImage</code> in a terminal.</span></li>
+        <li><span>Double-click it to paint!</span></li>
+      </ol>
+    </div>
     <p class="small">Download not starting? <a data-releases href="#download"><b>Get it from the releases page</b></a> or see the <a href="help.html"><b>help guide</b></a>.</p>
   </div>
 </div>
